@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="oschadpay.back.config.save" path="/admin/module/Oschadpay" methods="post">
+        <default key="_controller">Oschadpay:Back\Config:save</default>
+    </route>
+
+    <route id="oschadpay.front.gateway.callback" path="/Oschadpay/gateway/callback" methods="post">
+        <default key="_controller">Oschadpay:Front\Gateway:callback</default>
+    </route>
+
+</routes>

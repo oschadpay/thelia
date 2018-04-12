@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns="http://thelia.net/schema/dic/config"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://thelia.net/schema/dic/config http://thelia.net/schema/dic/config/thelia-1.0.xsd">
+
+    <forms>
+        <form name="oschadpay.form.config" class="Oschadpay\Form\ConfigForm"/>
+    </forms>
+
+    <hooks>
+        <hook id="oschadpay.hook.back.config" class="Oschadpay\Hook\Back\ConfigHook" scope="request">
+            <tag name="hook.event_listener" type="backoffice" event="module.configuration"/>
+        </hook>
+
+        <hook id="oschadpay.hook.front.order" class="Oschadpay\Hook\Front\OrderHook" scope="request">
+            <tag name="hook.event_listener" type="frontoffice" event="order-payment-gateway.body"/>
+        </hook>
+    </hooks>
+
+    <services>
+        <service id="oschadpay.service.oschadpay.request" class="Oschadpay\Service\OSCHADPAY\RequestService">
+            <argument type="service" id="router.oschadpay"/>
+            <argument type="service" id="thelia.url.manager"/>
+        </service>
+
+        <service id="oschadpay.service.oschadpay.response" class="Oschadpay\Service\OSCHADPAY\ResponseService">
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+    </services>
+
+</config>
